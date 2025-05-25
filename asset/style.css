@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.error-container {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.error-code {
+    font-size: 120px;
+    color: #ff4444;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.suggestion {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.back-home-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #1a73e8;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.back-home-btn:hover {
+    background-color: #1556b0;
+}
+
+/* 移动端适配 */
+@media (max-width: 600px) {
+    .error-code {
+        font-size: 80px;
+    }
+    .error-message {
+        font-size: 18px;
+    }
+}
