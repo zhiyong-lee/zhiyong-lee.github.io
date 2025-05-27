@@ -4,34 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>赛博乞讨页</title>
-    <!-- 引入Bootstrap样式 -->
+    <!-- 引入Bootstrap和Font Awesome图标 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        .header-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                            url('https://i0.hdslb.com/bfs/new_dyn/fc0b1ab87ce1e42490a1fdf66a59d99e5063989.jpg'); 
-            background-size: cover;
-            background-position: center;
-            color: white;
+        /* 全局样式优化 */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
         }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+
+        /* 点赞按钮样式 */
+        .like-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            background-color: #ff4d4f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(255, 77, 79, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .like-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 77, 79, 0.3);
+        }
+
+        .like-icon {
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+        }
+
+        .like-count {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        /* 头部横幅优化 */
+        .header-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                            url('https://i0.hdslb.com/bfs/new_dyn/fc0b1ab87ce1e42490a1fdf66a59d99e5063989.jpg'); 
+            background-attachment: fixed;
+            min-height: 60vh;
+        }
+
+        /* 卡片优化 */
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* 页脚优化 */
+        footer {
+            padding: 2rem 0;
+        }
+
+        .social-link {
+            font-size: 1.2rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #ff4d4f;
         }
     </style>
 </head>
 <body>
 
+<!-- 点赞按钮 -->
+<button class="like-button" onclick="handleLike()">
+    <i class="like-icon fas fa-heart"></i>
+    <span class="like-count" id="likeCount">0</span>
+</button>
+
 <!-- 顶部导航栏 -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
     <div class="container">
-        <a class="navbar-brand" href="https://www.g.cn">首页</a>
+        <a class="navbar-brand" href="https://www.g.cn">
+            <img src="https://example.com/logo.png" alt="Logo" height="30" class="d-inline-block align-text-top me-2">
+            牛掰资本
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link active" href="#">首页</a>
                 </li>
@@ -50,13 +124,21 @@
 </nav>
 
 <!-- 头部横幅 -->
-<header class="header-bg py-5">
-    <div class="container text-center">
-        <h1 class="display-4 mb-4">牛掰控股资本非常有限公司</h1>
-        <p class="lead mb-5">我很贫穷，请给我钱</p>
-        <a href="mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=3437295564" class="btn btn-primary btn-lg">资助</a>
-    </div>
-</header>
+<header class="header-bg py-5 text-center">
+    <div class="container">
+        <h1 class="display-5 fw-bold mb-3">赛博乞讨计划</h1>
+        <p class="lead mb-4" style="opacity: 0.8;">
+            这里是牛掰控股资本<br>
+            您的每一次支持都是我们前行的动力
+        </p>
+        <a href="mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=3437295564" 
+           class="btn btn-danger btn-lg px-4 me-2">
+            <i class="fas fa-hand-holding-usd me-1"></i> 直接资助
+        </a>
+        <a href="#likeCount" class="btn btn-secondary btn-lg px-4">
+            <i class="fas fa-thumbs-up me-1"></i> 先点个赞
+        </a>
+    </header>
 
 <!-- 内容区块 -->
 <section class="container py-5">
@@ -64,32 +146,80 @@
         <!-- 卡片模块 -->
         <div class="col-md-4">
             <div class="card card-hover">
-                <img src="https://pic.rmb.bdstatic.com/bjh/af70669daf3bb2242758e614b71603e24896.jpeg" class="card-img-top" alt="oiiai">
-                <div class="card-body">
-                    <h5 class="card-title">我很贫穷</h5>
-                    <p class="card-text">请给我钱</p>
-                    <a href="#" class="btn btn-secondary">滚回顶部</a>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1997060923&auto=1&height=66">
-</iframe>
+                <img src="https://pic.rmb.bdstatic.com/bjh/af70669daf3bb2242758e614b71603e24896.jpeg" 
+                     class="card-img-top" 
+                     alt="oiiai">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-danger mb-3">贫困声明</h5>
+                    <p class="card-text">
+                        目前公司账户余额不足<br>
+                        <strong>急需您的爱心支援</strong>
+                    </p>
+      <div class="d-grid">
+                        <a href="#" class="btn btn-danger">查看贫困证明</a>
+                    </div>
+                    <div class="mt-3" style="height: 86px;">
+                        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" 
+                                width="100%" height="100%" 
+                                src="//music.163.com/outchain/player?type=2&id=1997060923&auto=1&height=66">
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- 重复卡片代码可添加更多模块 -->
+        <!-- 可复制卡片代码添加更多模块 -->
     </div>
 </section>
 
 <!-- 页脚 -->
-<footer class="bg-dark text-white py-3">
-    <div class="container text-center">
-        <p>Copyright &copy; 2017-2025 Zhiyong Lee All Rights Recv</p>
-        <div class="mt-2">
-            <a href="mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=3437295564" class="text-white me-3">QQ</a>
-            <a href="weixin://dl/chat/Lee18877300647" class="text-white">微信</a>
+<footer class="bg-dark text-white text-center">
+    <div class="container">
+        <p class="mb-2">
+            &copy; 2017-2025 牛掰控股资本有限公司<br>
+            备案号：京ICP备123456号
+        </p>
+        <div class="social-links mb-3">
+            <a href="mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=3437295564" 
+               class="social-link text-white fab fa-qq"></a>
+            <a href="weixin://dl/chat/Lee18877300647" 
+               class="social-link text-white fab fa-weixin"></a>
         </div>
+        <p class="text-muted small">
+            本页面仅用于演示，不涉及真实交易<br>
+            爱心捐赠请通过正规渠道
+        </p>
     </div>
 </footer>
 
+<!-- 点赞交互脚本（需配合后端API） -->
+<script>
+    const likeCountElement = document.getElementById('likeCount');
+    let isLiking = false; // 防止重复点击
+
+    async function handleLike() {
+        if (isLiking) return;
+        
+        isLiking = true;
+        likeCountElement.textContent = parseInt(likeCountElement.textContent) + 1; // 前端临时计数
+        
+        // 这里替换为实际后端API请求
+        // try {
+        //     const response = await fetch('/api/like/increment', { method: 'POST' });
+        //     if (!response.ok) throw new Error('请求失败');
+        // } catch (error) {
+        //     // 处理失败情况，回退计数
+        //     likeCountElement.textContent = parseInt(likeCountElement.textContent) - 1;
+        // } finally {
+        //     isLiking = false;
+        // }
+    }
+
+    // 模拟初始化计数（实际需从后端获取）
+    likeCountElement.textContent = '123';
+</script>
+
 <!-- 引入Bootstrap脚本 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
 </html>
