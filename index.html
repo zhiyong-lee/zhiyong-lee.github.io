@@ -3,224 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lee's Blog</title>
-    <!-- 引入Bootstrap和Font Awesome图标 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        /* 全局样式优化 */
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            line-height: 1.6;
+    <title>取什么名字好呢？</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        secondary: '#3B82F6',
+                        accent: '#BFDBFE',
+                        dark: '#0F172A',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
         }
-
-        /* 点赞按钮样式 */
-        .like-button {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 999;
-            width: 60px;
-            height: 60px;
-            background-color: #ff4d4f;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(255, 77, 79, 0.2);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .like-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(255, 77, 79, 0.3);
-        }
-
-        .like-icon {
-            font-size: 1.8rem;
-            margin-bottom: 4px;
-        }
-
-        .like-count {
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-
-        /* 头部横幅优化 */
-        .header-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                            url('https://i0.hdslb.com/bfs/new_dyn/fc0b1ab87ce1e42490a1fdf66a59d99e5063989.jpg'); 
-            background-attachment: fixed;
-            min-height: 60vh;
-        }
-
-        /* 卡片优化 */
-        .card {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        /* 页脚优化 */
-        footer {
-            padding: 2rem 0;
-        }
-
-        .social-link {
-            font-size: 1.2rem;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-
-        .social-link:hover {
-            color: #ff4d4f;
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .animate-pulse-slow {
+                animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+            .animate-float {
+                animation: float 3s ease-in-out infinite;
+            }
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-15px); }
+                100% { transform: translateY(0px); }
+            }
         }
     </style>
 </head>
-<body>
-
-<!-- 点赞按钮 -->
-<button class="like-button" onclick="handleLike()">
-    <i class="like-icon fas fa-heart"></i>
-    <span class="like-count" id="likeCount">0</span>
-</button>
-
-<!-- 顶部导航栏 -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="asset/icon.png" alt="Logo" height="30" class="d-inline-block align-text-top me-2">
-            Lee's Blog
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">首页</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="README.md">关于</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/asset/404.html">服务</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/asset/404.html">联系</a>
-                </li>
-            </ul>
-        </div>
+<body class="font-inter bg-gradient-to-br from-dark to-primary min-h-screen flex flex-col items-center justify-center p-4 text-white">
+    <!-- 装饰性背景元素 -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://picsum.photos/id/180/1920/1080')] bg-cover bg-center opacity-20 blur-sm"></div>
+        <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-secondary/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
     </div>
-</nav>
 
-<!-- 头部横幅 -->
-<header class="header-bg py-5 text-center">
-    <div class="container">
-        <h1 class="display-5 fw-bold mb-3">还没完工</h1>
-        <p class="lead mb-4" style="opacity: 0.8;">
-            出去啊<br>
-            还没完工
-        </p>
-        <a href="mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=3437295564" 
-           class="btn btn-danger btn-lg px-4 me-2">
-            <i class="far fa-comment-alt-smile" /></i> 联系站主
-        </a>
-        <a href="#likeCount" class="btn btn-secondary btn-lg px-4">
-            <i class="fas fa-thumbs-up me-1"></i> 支持一下
-        </a>
-    </header>
+    <div class="relative z-10 max-w-3xl w-full mx-auto text-center">
+        <!-- 标志/标题 -->
+        <div class="mb-8">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center animate-float">
+                    <i class="fa fa-cogs text-2xl text-accent"></i>
+                </div>
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white text-shadow">服务器<span class="text-accent">优化中</span></h1>
+            </div>
+            <p class="text-xl md:text-2xl text-accent/90 font-medium">个人能力有限，可能会花费比预期更长的时间</p>
+        </div>
 
-<!-- 内容区块 -->
-<section class="container py-5">
-    <div class="row g-4">
-        <!-- 卡片模块 -->
-        <div class="col-md-4">
-            <div class="card card-hover">
-                <img src="?00000" 
-                     class="card-img-top" 
-                     alt="oiiai">
-                <div class="card-body p-4">
-                    <h5 class="card-title text-danger mb-3">文本</h5>
-                    <p class="card-text">
-                        还是文本<br>
-                        <strong>。。。。。出去出去，别看了</strong>
+        <!-- 主要内容 -->
+        <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/10 mb-8">
+            <div class="mb-6">
+                <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center animate-pulse-slow">
+                    <i class="fa fa-wrench text-4xl text-accent"></i>
+                </div>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">站点升级维护中</h2>
+                <p class="text-lg md:text-xl text-white/80 mb-6">正在对服务器进行优化升级，以提供更流畅的访问体验。</p>
+                
+                <!-- 预计时间 -->
+                <div class="flex items-center justify-center space-x-2 mb-6">
+                    <i class="fa fa-clock-o text-accent"></i>
+                    <span class="text-white/80">预计完成时间: <span class="font-medium">我不知道啊</span></span>
+                </div>
+            </div>
+
+            <!-- 信息提示 -->
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                <div class="flex items-start space-x-3">
+                    <i class="fa fa-info-circle text-accent mt-1"></i>
+                    <p class="text-left text-white/70">
+                        优化期间可能无法访问网站，给您带来不便，敬请谅解。如有紧急需求，请联系客服。
                     </p>
-      <div class="d-grid">
-                        <a href="mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=3437295564">😅</a>
-                    </div>
-                    <div class="mt-3" style="height: 86px;">
-                        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" 
-                                width="100%" height="100%" 
-                                src="//music.163.com/outchain/player?type=2&id=1997060923&auto=1&height=66">
-                        </iframe>
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- 可复制卡片代码添加更多模块 -->
-    </div>
-</section>
 
-<!-- 页脚 -->
-<footer class="bg-dark text-white text-center">
-    <div class="container">
-        <p class="mb-2">
-            &copy; 2017-2025 牛掰控股资本非常有限公司<br>
-            备案号：桂ICP未备94664643号
-        </p>
-        <div class="social-links mb-3">
-            <a href="mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=3437295564" 
-               class="social-link text-white fab fa-qq"></a>
-            <a href="weixin://dl/chat/Lee18877300647" 
-               class="social-link text-white fab fa-weixin"></a>
+        <!-- 联系方式 -->
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://mail.qq.com" class="flex items-center space-x-2 bg-white/5 hover:bg-white/10 transition-all duration-300 px-4 py-2 rounded-full">
+                <i class="fa fa-envelope-o text-accent"></i>
+                <span class="text-white/80">lzyhhh04@outlook.com</span>
+            </a>
+            <a href="#" class="flex items-center space-x-2 bg-white/5 hover:bg-white/10 transition-all duration-300 px-4 py-2 rounded-full">
+                <i class="fa fa-phone text-accent"></i>
+                <span class="text-white/80">+86 18877300647</span>
+            </a>
+            <a href="mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=3437295564" class="flex items-center space-x-2 bg-white/5 hover:bg-white/10 transition-all duration-300 px-4 py-2 rounded-full">
+                <i class="social-link text-white fab fa-qq"></i>
+                <span class="text-white/80">在线客服</span>
+            </a>
         </div>
-        <p class="text-muted small">
-            nice to meet
-<br>
-            you
-        </p>
+
+        <!-- 页脚 -->
+        <footer class="mt-12 text-white/40 text-sm">
+            <p>© 2017-2025 Zhiyong Lee 保留所有权利</p>
+        </footer>
     </div>
-</footer>
 
-<!-- 点赞交互脚本（需配合后端API） -->
-<script>
-    const likeCountElement = document.getElementById('likeCount');
-    let isLiking = false; // 防止重复点击
-
-    async function handleLike() {
-        if (isLiking) return;
-        
-        isLiking = true;
-        likeCountElement.textContent = parseInt(likeCountElement.textContent) + 1; // 前端临时计数
-        
-        // 这里替换为实际后端API请求
-        // try {
-        //     const response = await fetch('/api/like/increment', { method: 'POST' });
-        //     if (!response.ok) throw new Error('请求失败');
-        // } catch (error) {
-        //     // 处理失败情况，回退计数
-        //     likeCountElement.textContent = parseInt(likeCountElement.textContent) - 1;
-        // } finally {
-        //     isLiking = false;
-        // }
-    }
-
-    // 模拟初始化计数（实际需从后端获取）
-    likeCountElement.textContent = '665';
-</script>
-
-<!-- 引入Bootstrap脚本 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-</head>
+    <!-- 动画效果 -->
+    <script>
+        // 粒子效果
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.createElement('canvas');
+            document.body.appendChild(canvas);
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '0';
+            
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let width, height;
+            
+            function init() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+                
+                particles = [];
+                for (let i = 0; i < 100; i++) {
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * 2 + 1,
+                        color: `rgba(191, 219, 254, ${Math.random() * 0.5 + 0.1})`,
+                        speedX: (Math.random() - 0.5) * 0.5,
+                        speedY: (Math.random() - 0.5) * 0.5
+                    });
+                }
+            }
+            
+            function update() {
+                ctx.clearRect(0, 0, width, height);
+                
+                particles.forEach(particle => {
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    
+                    if (particle.x < 0 || particle.x > width) {
+                        particle.speedX = -particle.speedX;
+                    }
+                    
+                    if (particle.y < 0 || particle.y > height) {
+                        particle.speedY = -particle.speedY;
+                    }
+                    
+                    ctx.fillStyle = particle.color;
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                
+                requestAnimationFrame(update);
+            }
+            
+            window.addEventListener('resize', init);
+            init();
+            update();
+        });
+    </script>
+</body>
 </html>
+    
