@@ -3,184 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>取什么名字好呢？</title>
-    <link rel="shortcut icon" href="/asset/pic/icon.png" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1E40AF',
-                        secondary: '#3B82F6',
-                        accent: '#BFDBFE',
-                        dark: '#0F172A',
-                    },
-                    fontFamily: {
-                        inter: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
+    <title>安全网址导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+            /* 过渡效果统一，提升交互流畅度 */
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .animate-pulse-slow {
-                animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-            }
-            .animate-float {
-                animation: float 3s ease-in-out infinite;
-            }
-            @keyframes float {
-                0% { transform: translateY(0px); }
-                50% { transform: translateY(-15px); }
-                100% { transform: translateY(0px); }
-            }
+
+        /* 白天模式基础样式 */
+        body {
+            background-color: #ffffff;
+            color: #343a40;
+        }
+
+        /* 夜间模式样式 */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #e9ecef;
+        }
+
+        /* 声明栏样式 */
+        .declaration {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            padding: 12px 0;
+            text-align: center;
+        }
+        body.dark-mode .declaration {
+            background-color: #2d2d2d;
+            border-bottom-color: #444444;
+        }
+        .declaration p {
+            color: #dc3545;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* 头部样式（含夜间模式切换） */
+        header {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 32px;
+            color: #343a40;
+        }
+        body.dark-mode header h1 {
+            color: #ffffff;
+        }
+        /* 夜间模式切换按钮 */
+        .theme-toggle {
+            padding: 8px 16px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            background-color: #ffffff;
+            color: #007bff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        body.dark-mode .theme-toggle {
+            background-color: #2d2d2d;
+            border-color: #499eff;
+            color: #499eff;
+        }
+        /* 搜索框样式 */
+        .search-box {
+            width: 60%;
+            margin: 0 auto;
+        }
+        header input {
+            width: 80%;
+            padding: 12px 15px;
+            border: 2px solid #007bff;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            font-size: 16px;
+            background-color: #ffffff;
+            color: #343a40;
+        }
+        body.dark-mode header input {
+            background-color: #2d2d2d;
+            border-color: #499eff;
+            color: #e9ecef;
+        }
+        header button {
+            width: 20%;
+            padding: 12px 0;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        body.dark-mode header button {
+            background-color: #499eff;
+        }
+        header button:hover {
+            background-color: #0056b3;
+        }
+        body.dark-mode header button:hover {
+            background-color: #3385ff;
+        }
+
+        /* 导航栏样式（带Logo） */
+        .nav-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .nav-category {
+            margin-bottom: 30px;
+        }
+        .nav-category h2 {
+            font-size: 20px;
+            color: #495057;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #007bff;
+        }
+        body.dark-mode .nav-category h2 {
+            color: #e9ecef;
+            border-left-color: #499eff;
+        }
+        /* 带Logo的链接容器 */
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .nav-link-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #f1f3f5;
+            color: #343a40;
+            text-decoration: none;
+            border-radius: 4px;
+            width: 180px;
+        }
+        body.dark-mode .nav-link-item {
+            background-color: #2d2d2d;
+            color: #e9ecef;
+        }
+        .nav-link-item:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        body.dark-mode .nav-link-item:hover {
+            background-color: #499eff;
+        }
+        /* Logo样式 */
+        .site-logo {
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+        .site-name {
+            font-size: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 底部样式 */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            border-top: 1px solid #e9ecef;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        body.dark-mode footer {
+            border-top-color: #444444;
+            color: #a0a0a0;
         }
     </style>
 </head>
-<body class="font-inter bg-gradient-to-br from-dark to-primary min-h-screen flex flex-col items-center justify-center p-4 text-white">
-    <!-- 装饰性背景元素 -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://picsum.photos/id/180/1920/1080')] bg-cover bg-center opacity-20 blur-sm"></div>
-        <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-secondary/20 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-1/3 right-1/4 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
+<body>
+    <!-- 违法违规声明栏 -->
+    <div class="declaration">
+        <p>⚠️ 本网站仅提供合法合规网址导航服务，不存储、不传播、不提供任何违法违规技术及内容，如有违规链接请联系删除 ⚠️</p>
     </div>
 
-    <div class="relative z-10 max-w-3xl w-full mx-auto text-center">
-        <!-- 标志/标题 -->
-        <div class="mb-8">
-            <div class="flex items-center justify-center space-x-3 mb-4">
-                <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center animate-float">
-                    <i class="fa fa-cogs text-2xl text-accent"></i>
-                </div>
-                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white text-shadow">服务器<span class="text-accent">优化中</span></h1>
+    <!-- 头部（标题+夜间模式切换+搜索） -->
+    <header>
+        <h1>安全网址导航</h1>
+        <button class="theme-toggle" id="themeToggle">切换夜间模式</button>
+        <div class="search-box">
+            <input type="text" placeholder="输入关键词搜索网址..." id="searchInput">
+            <button type="button" id="searchBtn">搜索</button>
+        </div>
+    </header>
+
+    <!-- 导航内容区（每个链接带Logo） -->
+    <div class="nav-container">
+        <!-- 常用工具分类 -->
+        <div class="nav-category">
+            <h2>常用工具</h2>
+            <div class="nav-links">
+                <a href="https://www.baidu.com" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="百度Logo" class="site-logo">
+                    <span class="site-name">百度搜索</span>
+                </a>
+                 <a 
+href="https://www.qq.com" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="腾讯Logo" class="site-logo">
+                    <span class="site-name">腾讯首页</span>
+                </a>
+                <a href="https://mail.163.com" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="网易邮箱Logo" class="site-logo">
+                    <span class="site-name">网易邮箱</span>
+                </a>
+                <a href="https://www.zhihu.com" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="知乎Logo" class="site-logo">
+                    <span class="site-name">知乎</span>
+                </a>
+                <a href="https://www.bilibili.com" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="B站Logo" class="site-logo">
+                    <span class="site-name">哔哩哔哩</span>
+                </a>
             </div>
-            <p class="text-xl md:text-2xl text-accent/90 font-medium">个人能力有限，可能会花费比预期更长的时间</p>
         </div>
 
-        <!-- 主要内容 -->
-        <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/10 mb-8">
-            <div class="mb-6">
-                <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center animate-pulse-slow">
-                    <i class="fa fa-wrench text-4xl text-accent"></i>
-                </div>
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">站点升级维护中</h2>
-                <p class="text-lg md:text-xl text-white/80 mb-6">正在对服务器进行优化升级，以提供更流畅的访问体验。</p>
-                
-                <!-- 预计时间 -->
-                <div class="flex items-center justify-center space-x-2 mb-6">
-                    <i class="fa fa-clock-o text-accent"></i>
-                    <span class="text-white/80">预计完成时间: <span class="font-medium">我不知道啊</span></span>
-                </div>
-            </div>
-
-            <!-- 信息提示 -->
-            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
-                <div class="flex items-start space-x-3">
-                    <i class="fa fa-info-circle text-accent mt-1"></i>
-                    <p class="text-left text-white/70">
-                        优化期间可能无法访问网站，给您带来不便，敬请谅解。如有紧急需求，请联系客服。
-                    </p>
-                </div>
+        <!-- 办公学习分类 -->
+        <div class="nav-category">
+            <h2>办公学习</h2>
+            <div class="nav-links">
+                <a href="https://docs.qq.com" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="腾讯文档Logo" class="site-logo">
+                    <span class="site-name">腾讯文档</span>
+                </a>
+                <a 
+href="https://www.notion.so" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="NotionLogo" class="site-logo">
+                    <span class="site-name">Notion</span>
+                </a>
+                <a href="https://www.icourse163.org" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="中国大学MOOCLogo" class="site-logo">
+                    <span class="site-name">中国大学MOOC</span>
+                </a>
+                <a href="https://www.cnki.net" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="知网Logo" class="site-logo">
+                    <span class="site-name">中国知网</span>
+                </a>
+                <a href="https://translate.google.cn" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="谷歌翻译Logo" class="site-logo">
+                    <span class="site-name">谷歌翻译</span>
+                </a>
             </div>
         </div>
 
-        <!-- 联系方式 -->
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="https://mail.qq.com" class="flex items-center space-x-2 bg-white/5 hover:bg-white/10 transition-all duration-300 px-4 py-2 rounded-full">
-                <i class="fa fa-envelope-o text-accent"></i>
-                <span class="text-white/80">admin@lzy666.top</span>
-            </a>
-            <a href="/asset/404.html" class="flex items-center space-x-2 bg-white/5 hover:bg-white/10 transition-all duration-300 px-4 py-2 rounded-full">
-                <i class="fa fa-phone text-accent"></i>
-                <span class="text-white/80">+86 18877300647</span>
-            </a>
-            <a href="mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=3437295564" class="flex items-center space-x-2 bg-white/5 hover:bg-white/10 transition-all duration-300 px-4 py-2 rounded-full">
-                <i class="fa fa-qq text-accent"></i>
-                <span class="text-white/80">QQ客服</span>
-            </a>
+        <!-- 生活服务分类 -->
+        <div class="nav-category">
+            <h2>生活服务</h2>
+            <div class="nav-links">
+                <a href="https://www.ctrip.com" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="携程Logo" class="site-logo">
+                    <span class="site-name">携程旅行</span>
+                </a>
+                <a 
+href="https://www.meituan.com" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="美团Logo" class="site-logo">
+                    <span class="site-name">美团</span>
+                </a>
+                <a href="https://www.ele.me" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="饿了么Logo" class="site-logo">
+                    <span class="site-name">饿了么</span>
+                </a>
+                <a href="https://www.12306.cn" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="12306Logo" class="site-logo">
+                    <span class="site-name">12306铁路</span>
+                </a>
+                <a href="https://weather.qq.com" target="_blank" class="nav-link-item">
+                    <img src="logo链接" alt="腾讯天气Logo" class="site-logo">
+                    <span class="site-name">腾讯天气</span>
+                </a>
+            </div>
         </div>
-
-        <!-- 页脚 -->
-        <footer class="mt-12 text-white/40 text-sm">
-            <p>© 2017-2025 Zhiyong Lee 保留所有权利</p>
-        </footer>
     </div>
 
-    <!-- 动画效果 -->
+    <!-- 底部信息 -->
+    <footer>
+        <p>© 2025 安全网址导航 | 所有链接均跳转至第三方平台，本网站不承担第三方内容责任</p>
+    </footer>
+<!-- 夜间模式切换脚本 -->
     <script>
-        // 粒子效果
-        document.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.createElement('canvas');
-            document.body.appendChild(canvas);
-            canvas.style.position = 'fixed';
-            canvas.style.top = '0';
-            canvas.style.left = '0';
-            canvas.style.width = '100%';
-            canvas.style.height = '100%';
-            canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '0';
-            
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            let width, height;
-            
-            function init() {
-                width = window.innerWidth;
-                height = window.innerHeight;
-                canvas.width = width;
-                canvas.height = height;
-                
-                particles = [];
-                for (let i = 0; i < 100; i++) {
-                    particles.push({
-                        x: Math.random() * width,
-                        y: Math.random() * height,
-                        radius: Math.random() * 2 + 1,
-                        color: `rgba(191, 219, 254, ${Math.random() * 0.5 + 0.1})`,
-                        speedX: (Math.random() - 0.5) * 0.5,
-                        speedY: (Math.random() - 0.5) * 0.5
-                    });
+        // 获取切换按钮和body元素
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // 初始化：检查本地存储的主题偏好
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '切换白天模式';
+        }
+
+        // 切换主题事件
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                // 切换到白天模式
+                body.classList.remove('dark-mode');
+                themeToggle.textContent = '切换夜间模式';
+                localStorage.setItem('theme', 'light');
+            } else {
+                // 切换到夜间模式
+                body.classList.add('dark-mode');
+                themeToggle.textContent = '切换白天模式';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+// 简单搜索功能（匹配网站名称）
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const navLinks = document.querySelectorAll('.nav-link-item');
+
+        function handleSearch() {
+            const searchText = searchInput.value.trim().toLowerCase();
+            navLinks.forEach(link => {
+                const siteName = link.querySelector('.site-name').textContent.toLowerCase();
+                if (siteName.includes(searchText)) {
+                    link.style.display = 'flex';
+                } else {
+                    link.style.display = 'none';
                 }
-            }
-            
-            function update() {
-                ctx.clearRect(0, 0, width, height);
-                
-                particles.forEach(particle => {
-                    particle.x += particle.speedX;
-                    particle.y += particle.speedY;
-                    
-                    if (particle.x < 0 || particle.x > width) {
-                        particle.speedX = -particle.speedX;
-                    }
-                    
-                    if (particle.y < 0 || particle.y > height) {
-                        particle.speedY = -particle.speedY;
-                    }
-                    
-                    ctx.fillStyle = particle.color;
-                    ctx.beginPath();
-                    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                    ctx.fill();
-                });
-                
-                requestAnimationFrame(update);
-            }
-            
-            window.addEventListener('resize', init);
-            init();
-            update();
+            });
+        }
+
+        // 按钮点击搜索
+        searchBtn.addEventListener('click', handleSearch);
+        // 回车键搜索
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') handleSearch();
         });
     </script>
 </body>
 </html>
-    
