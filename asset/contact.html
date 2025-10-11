@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系站主</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        dark: '#121212',
+                        darkCard: '#1E1E1E'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .qr-overlay {
+                @apply opacity-0 invisible transition-all duration-300 absolute inset-0 rounded-lg flex items-center justify-center p-4 z-10;
+            }
+            .qr-container:hover .qr-overlay {
+                @apply opacity-100 visible;
+            }
+            .theme-transition {
+                @apply transition-colors duration-300 ease-in-out;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 min-h-screen theme-transition">
+    <!-- 夜间模式切换按钮 -->
+    <button id="theme-toggle" class="fixed top-4 right-4 w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center z-50 theme-transition">
+        <i class="fa fa-moon-o text-gray-700 theme-transition"></i>
+    </button>
+
+    <!-- 页面头部 -->
+    <header class="bg-white shadow-sm theme-transition">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-center text-gray-800 theme-transition">
+                联系站主
+            </h1>
+            <p class="text-gray-500 text-center mt-2 max-w-2xl mx-auto theme-transition">
+                欢迎通过以下方式与我取得联系，我将尽快回复您的咨询
+            </p>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto">
+            <!-- 联系卡片容器 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 微信联系卡片 -->
+                <div class="bg-white rounded-xl shadow-md p-6 qr-container relative card-hover theme-transition">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4 theme-transition">
+                            <i class="fa fa-weixin text-2xl text-green-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800 theme-transition">微信联系</h3>
+                        <p class="text-gray-600 mb-4 theme-transition">Lee18877300647</p>
+                        <span class="text-sm text-gray-500 cursor-pointer hover:text-primary transition-colors">
+                            点击查看二维码 <i class="fa fa-qrcode ml-1"></i>
+                        </span>
+                    </div>
+                    <!-- 二维码覆盖层 -->
+                    <div class="qr-overlay bg-white theme-transition">
+                        <div class="text-center">
+                            <p class="font-medium mb-2 text-gray-800 theme-transition">微信二维码</p>
+                            <img src="/asset/pic/wxqr.jpg" alt="微信二维码" class="max-w-[180px] h-auto rounded shadow">
+                            <p class="mt-2 text-sm text-gray-500 theme-transition">扫码添加好友</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QQ联系卡片 -->
+                <div class="bg-white rounded-xl shadow-md p-6 qr-container relative card-hover theme-transition">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4 theme-transition">
+                            <i class="fa fa-qq text-2xl text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800 theme-transition">QQ联系</h3>
+                        <p class="text-gray-600 mb-4 theme-transition">3437295564</p>
+                        <span class="text-sm text-gray-500 cursor-pointer hover:text-primary transition-colors">
+                            点击查看二维码 <i class="fa fa-qrcode ml-1"></i>
+                        </span>
+                    </div>
+                    <!-- 二维码覆盖层 -->
+                    <div class="qr-overlay bg-white theme-transition">
+                        <div class="text-center">
+                            <p class="font-medium mb-2 text-gray-800 theme-transition">QQ二维码</p>
+                            <img src="/asset/pic/qqqr.jpg" alt="QQ二维码" class="max-w-[180px] h-auto rounded shadow">
+                            <p class="mt-2 text-sm text-gray-500 theme-transition">扫码添加好友</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 邮箱联系卡片 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover theme-transition">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-4 theme-transition">
+                            <i class="fa fa-envelope text-2xl text-red-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800 theme-transition">邮件联系</h3>
+                        <p class="text-gray-600 mb-4 break-all theme-transition">1@lzy666.top</p>
+                        <a href="mailto:1@lzy666.top" class="text-sm text-primary hover:underline transition-colors">
+                            发送邮件 <i class="fa fa-paper-plane ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 联系表单区域 -->
+            <div class="mt-16 bg-white rounded-xl shadow-md p-8 theme-transition">
+                <h2 class="text-2xl font-bold mb-6 text-center text-gray-800 theme-transition">发送消息</h2>
+                <form class="space-y-6 max-w-2xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1 theme-transition">您的姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all theme-transition" placeholder="请输入您的姓名">
+                        </div>
+                        <div>
+                            <label for="contact" class="block text-sm font-medium text-gray-700 mb-1 theme-transition">联系方式</label>
+                            <input type="text" id="contact" class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all theme-transition" placeholder="电话或邮箱">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1 theme-transition">消息内容</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all resize-none theme-transition" placeholder="请输入您想咨询的内容..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all flex items-center justify-center space-x-2 group">
+                        <span>发送消息</span>
+                        <i class="fa fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 mt-16 theme-transition">
+        <div class="container mx-auto px-4 text-center">
+            <p class="theme-transition">© 2017-2025 Zy Lee 保留所有权利.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fa fa-weibo"></i>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fa fa-github"></i>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 夜间模式切换功能
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const bodyElement = document.body;
+        const iconElement = themeToggle.querySelector('i');
+        
+        // 检查本地存储中的主题偏好
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            enableDarkMode();
+        } else {
+            enableLightMode();
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                enableLightMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+        
+        // 启用暗色模式
+        function enableDarkMode() {
+            bodyElement.classList.add('bg-dark', 'text-gray-200');
+            bodyElement.classList.remove('bg-gray-50', 'text-gray-800');
+            
+            // 更新所有卡片和容器
+            document.querySelectorAll('header, .qr-container, .qr-overlay, main > div > div:last-child, footer').forEach(el => {
+                el.classList.remove('bg-white', 'bg-gray-800', 'text-gray-800');
+                el.classList.add('bg-darkCard', 'text-gray-200');
+            });
+            
+            // 更新输入框
+            document.querySelectorAll('input, textarea').forEach(input => {
+                input.classList.remove('bg-white', 'text-gray-800', 'border-gray-300');
+                input.classList.add('bg-dark', 'text-gray-200', 'border-gray-700');
+            });
+            
+            // 更新文字颜色
+            document.querySelectorAll('p, label, h3, h2, h1').forEach(text => {
+                text.classList.remove('text-gray-500', 'text-gray-600', 'text-gray-700', 'text-gray-800');
+                text.classList.add('text-gray-400');
+            });
+            
+            // 更新图标
+            iconElement.classList.remove('fa-moon-o', 'text-gray-700');
+            iconElement.classList.add('fa-sun-o', 'text-yellow-400');
+            
+            // 保存主题偏好
+            localStorage.setItem('theme', 'dark');
+        }
+        
+        // 启用亮色模式
+        function enableLightMode() {
+            bodyElement.classList.remove('bg-dark', 'text-gray-200');
+            bodyElement.classList.add('bg-gray-50', 'text-gray-800');
+            
+            // 更新所有卡片和容器
+            document.querySelectorAll('header, .qr-container, .qr-overlay, main > div > div:last-child').forEach(el => {
+                el.classList.remove('bg-darkCard', 'text-gray-200');
+                el.classList.add('bg-white', 'text-gray-800');
+            });
+            
+            // 页脚单独处理
+            document.querySelector('footer').classList.remove('bg-darkCard', 'text-gray-200');
+            document.querySelector('footer').classList.add('bg-gray-800', 'text-white');
+            
+            // 更新输入框
+            document.querySelectorAll('input, textarea').forEach(input => {
+                input.classList.remove('bg-dark', 'text-gray-200', 'border-gray-700');
+                input.classList.add('bg-white', 'text-gray-800', 'border-gray-300');
+            });
+            
+            // 恢复文字颜色
+            document.querySelectorAll('p:not(footer p), label').forEach(text => {
+                text.classList.remove('text-gray-400');
+                text.classList.add('text-gray-500');
+            });
+            
+            document.querySelectorAll('h3, h2, h1').forEach(text => {
+                text.classList.remove('text-gray-400');
+                text.classList.add('text-gray-800');
+            });
+            
+            // 更新图标
+            iconElement.classList.remove('fa-sun-o', 'text-yellow-400');
+            iconElement.classList.add('fa-moon-o', 'text-gray-700');
+            
+            // 保存主题偏好
+            localStorage.setItem('theme', 'light');
+        }
+
+        // 二维码卡片交互
+        document.querySelectorAll('.qr-container').forEach(container => {
+            container.addEventListener('click', function() {
+                const overlay = this.querySelector('.qr-overlay');
+                overlay.classList.toggle('opacity-0');
+                overlay.classList.toggle('invisible');
+            });
+        });
+
+        // 表单提交处理
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('消息发送成功！我们将尽快与您联系。');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
