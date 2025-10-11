@@ -2,17 +2,357 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>页面找不到啦~</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- 故意写死viewport，让移动端强制放大、PC端强制缩小 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=2.0, maximum-scale=2.0">
+    <title>404 找不到页面</title>
+    <style>
+        /* 故意混乱的样式：无章法、冲突、辣眼睛 */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: "Comic Sans MS", "Arial", 宋体, sans-serif; /* 字体混搭 */
+            background-color: #ffd700; /* 亮黄色背景 */
+            color: #ff00ff; /* 粉色文字 */
+            line-height: 1.2; /* 行高异常 */
+            overflow-x: hidden; /* 防止横向滚动条影响体验 */
+        }
+        .container {
+            /* 固定宽度不响应：手机显示不全、PC端偏左 */
+            width: 800px;
+            margin: 50px auto;
+            border: 5px dashed #00ff00; /* 绿色虚线边框 */
+            padding: 15px;
+            background: linear-gradient(45deg, #ff6347, #87ceeb, #ffff00); /* 刺眼渐变色 */
+        }
+        h1 {
+            font-size: 80px; /* 标题过大：移动端直接溢出 */
+            text-align: center;
+            color: #0000ff;
+            text-shadow: 3px 3px #ff0000; /* 红蓝色阴影冲突 */
+            margin: 10px 0;
+            transform: rotate(-5deg); /* 故意倾斜 */
+        }
+        .error-text {
+            font-size: 22px;
+            text-align: left;
+            margin: 30px 0;
+            color: #8b4513; /* 棕色文字 */
+            border-left: 10px solid #ff4500; /* 橙色粗边框 */
+            padding-left: 5px;
+        }
+        .random-stuff {
+            font-size: 16px;
+            color: #4b0082; /* 靛蓝色 */
+            background-color: #ffffff;
+            padding: 8px;
+            border: 2px solid #000;
+            margin: 20px 0;
+            line-height: 1.8;
+            /* PC端文字挤成一团，移动端直接换行错乱 */
+            width: 1200px;
+        }
+        .button {
+            display: block;
+            width: 120px;
+            height: 40px;
+            margin: 10px auto;
+            background-color: #ff0000;
+            color: #ffffff;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 40px;
+            text-decoration: none;
+            border-radius: 0; /* 无圆角 */
+            box-shadow: 0 0 10px #000;
+            position: relative; /* 新增：为了绝对定位偏移 */
+            transition: transform 0.2s ease; /* 新增：平滑移动过渡 */
+        }
+        .button:hover {
+            background-color: #00ff00; /* hover变绿色 */
+            color: #000;
+            transform: scale(0.9); /*  hover缩小 */
+        }
+        /* 恶心人的"关闭音效"按钮样式：故意做得像正常功能键 */
+        #muteBtn {
+            background-color: #0000ff;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        #muteBtn:hover {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+        .dog-poop {
+            text-align: center;
+            font-size: 100px; /* 巨大的"屎"字：移动端溢出屏幕 */
+            margin: 20px 0;
+            color: #8b4513;
+            opacity: 0.7;
+        }
+        .random-image {
+            display: block;
+            margin: 0 auto;
+            width: 500px; /* 图片固定超大：手机完全显示不下 */
+            height: auto;
+            border: 3px solid #ff00ff;
+            transform: skew(10deg); /* 图片倾斜 */
+        }
+        footer {
+            text-align: right;
+            font-size: 12px;
+            color: #000;
+            margin-top: 50px;
+            border-top: 1px dotted #000;
+            padding-top: 10px;
+            /* 页脚固定右对齐：手机端只露一半 */
+            width: 1500px;
+        }
+        /* 故意写反的媒体查询：手机端用PC样式，PC端用手机样式 */
+        @media (max-width: 768px) {
+            .container {
+                width: 1200px; /* 手机端强制超宽，必须左右拖动 */
+                padding: 5px;
+            }
+            h1 {
+                font-size: 120px; /* 手机端标题更夸张，直接溢出 */
+            }
+            #muteBtn {
+                width: 80px;
+                font-size: 12px;
+            }
+        }
+        @media (min-width: 769px) {
+            .container {
+                width: 300px; /* PC端强制窄版，内容挤成一团 */
+            }
+            .error-text {
+                font-size: 10px; /* PC端文字故意缩小，看不清 */
+            }
+        }
+        /* 点击区域样式：故意让用户分不清哪能点 */
+        .clickable-mess {
+            cursor: pointer;
+            margin: 15px 0;
+            color: #0000ff;
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<script src="script.js"></script>
 <body>
-    <div class="error-container">
-        <h1 class="error-code">404</h1>
-        <p class="error-message">页面都找不到了~</p>
-        <p class="suggestion">真♡是♡条♡杂♡鱼♡呢♡~</p>
-        <a href="/" class="back-home-btn">只能返回首页了呢，杂♡鱼~</a>
+    <!-- 恶心人的"关闭音效"按钮：点了反而放大音量 -->
+    <button class="button" id="muteBtn">关闭音效</button>
+
+    <div class="container">
+        <!-- 巨大刺眼的404标题 -->
+        <h1>404!</h1>
+        
+        <!-- 故意恶心的"屎"字元素 -->
+        <div class="dog-poop">💩</div>
+
+        <!-- 排版混乱的错误提示 -->
+        <div class="error-text">
+            哎呀妈呀！你要找的页面跑丢了！
+            <br>
+            是不是点错链接了？还是地址写错了？
+            <br>
+            反正就是找不到！找不到！找不到！
+        </div>
+
+        <!-- 无关紧要的杂乱内容：PC端超宽、手机端挤爆 -->
+        <div class="random-stuff">
+            友情提示：
+            今天天气不错哦~ 要不要先回首页看看？
+            或者刷新一下？说不定就出来了呢（才怪）
+            对了，你吃过饭了吗？没吃的话先去吃饭吧，页面的事不急...
+        </div>
+
+        <!-- 意义不明的可点击文字：点了只出音效没实际功能 -->
+        <div class="clickable-mess" id="click1">点我有惊喜！</div>
+        <div class="clickable-mess" id="click2">别点上面那个，点我！</div>
+        <div class="clickable-mess" id="click3">其实点图片也有用...</div>
+
+        <!-- 固定超大的歪掉图片：所有设备都显示不全 -->
+        <img src="https://picsum.photos/500/300?random=1" alt="不知道是什么的图" class="random-image" id="imgClick">
+
+        <!-- 交互体验差的按钮 -->
+        <a href="#" class="button avoid-mouse" id="btnHome">回首页</a>
+        <a href="javascript:location.reload()" class="button avoid-mouse" id="btnRefresh">刷新试试</a>
     </div>
+
+    <!-- 固定超宽的页脚：手机端只露一半，PC端偏右 -->
+    <footer>
+        这个404页面是故意做这么丑的，别骂了别骂了...
+    </footer>
+
+    <!-- 意义不明的狗屎音效：音量随机+关闭按钮反效果 -->
+    <script>
+        // 创建音频上下文
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioContext();
+        let currentGain = 0.3; // 默认音量
+
+        // 生成狗屎音效的函数：音量随机+刺耳无规律
+        function playPoopSound(type) {
+            audioCtx.resume(); // 唤醒音频上下文
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            // 音量随机：50%概率突然放大到1.0（超大声），50%保持当前音量
+            const randomVol = Math.random() > 0.5 ? 1.0 : currentGain;
+            gainNode.gain.setValueAtTime(randomVol, audioCtx.currentTime);
+
+            // 不同点击对应不同奇葩音效
+            switch(type) {
+                case 1: // 尖锐噪音
+                    oscillator.type = 'sawtooth';
+                    oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.5);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                    break;
+                case 2: // 低沉闷响
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(50, audioCtx.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(20, audioCtx.currentTime + 1);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1);
+                    break;
+                case 3: // 杂乱杂音
+                    oscillator.type = 'triangle';
+                    oscillator.frequency.setValueAtTime(300, audioCtx.currentTime);
+                    oscillator.frequency.setValueAtTime(600, audioCtx.currentTime + 0.2);
+                    oscillator.frequency.setValueAtTime(150, audioCtx.currentTime + 0.4);
+                    gainNode.gain.setValueAtTime(0.01, audioCtx.currentTime + 0.6);
+                    break;
+                case 4: // 高频刺耳声
+                    oscillator.type = 'square';
+                    oscillator.frequency.setValueAtTime(1200, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    break;
+                default: // 随机混合音效
+                    oscillator.type = ['sine', 'square', 'sawtooth', 'triangle'][Math.floor(Math.random()*4)];
+                    oscillator.frequency.setValueAtTime(Math.random()*1000 + 200, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2 + Math.random()*0.8);
+            }
+
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 1.5); // 防止音效过长
+        }
+
+        // 给所有元素绑定意义不明的音效：功能和音效完全不匹配
+        document.getElementById('click1').addEventListener('click', () => playPoopSound(1));
+        document.getElementById('click2').addEventListener('click', () => playPoopSound(2));
+        document.getElementById('click3').addEventListener('click', () => playPoopSound(3));
+        document.getElementById('imgClick').addEventListener('click', () => playPoopSound(4));
+        document.getElementById('btnHome').addEventListener('click', (e) => {
+            e.preventDefault(); // 阻止回首页功能，只出音效
+            playPoopSound(Math.floor(Math.random()*5));
+        });
+        document.getElementById('btnRefresh').addEventListener('click', (e) => {
+            if (Math.random() > 0.5) { // 50%概率只出音效不刷新
+                e.preventDefault();
+                playPoopSound(Math.floor(Math.random()*5));
+            } else {
+                playPoopSound(4); // 刷新时也出刺耳音效
+            }
+        });
+
+        // 恶心人的"关闭音效"按钮：点一次音量放大2倍，直到最大1.0
+        document.getElementById('muteBtn').addEventListener('click', () => {
+            currentGain = Math.min(currentGain + 0.2, 1.0); // 每次点击音量+0.2，上限1.0
+            playPoopSound(4); // 点按钮也出刺耳音效
+            // 按钮文字骗人：始终显示"关闭音效"，不提示真实效果
+        });
+
+        // 随机弹出 alert 骚扰用户
+        setTimeout(() => {
+            if (Math.random() > 0.5) {
+                alert("提醒：你真的确定要找那个页面吗？");
+                playPoopSound(2); // 弹窗也出音效
+            }
+        }, 3000);
+
+        // 页面滚动时随机改变背景色+出音效
+        let lastScrollTime = 0;
+        window.addEventListener('scroll', () => {
+            const now = Date.now();
+            if (now - lastScrollTime > 500) { // 防止滚动时音效太密集
+                lastScrollTime = now;
+                const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
+                document.body.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+                if (Math.random() > 0.3) { // 70%概率滚动也出音效
+                    playPoopSound();
+                }
+            }
+        });
+
+        // 故意让触摸操作错乱：手机端点击按钮会偏移
+        document.querySelectorAll('.button').forEach(btn => {
+            btn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const randomX = Math.random() * 50 - 25;
+                const randomY = Math.random() * 50 - 25;
+                btn.style.transform = `translate(${randomX}px, ${randomY}px) scale(0.9)`;
+                playPoopSound(3); // 触摸偏移也出音效
+            });
+        });
+
+        // 新增：按钮躲避鼠标效果
+        const avoidButtons = document.querySelectorAll('.avoid-mouse');
+        const avoidanceDistance = 100; // 触发躲避的距离阈值
+        const moveDistance = 80; // 躲避移动的距离
+
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            avoidButtons.forEach(button => {
+                const rect = button.getBoundingClientRect();
+                const btnX = rect.left + rect.width / 2;
+                const btnY = rect.top + rect.height / 2;
+
+                // 计算鼠标与按钮中心的距离
+                const dx = mouseX - btnX;
+                const dy = mouseY - btnY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                // 当鼠标进入躲避范围时
+                if (distance < avoidanceDistance) {
+                    // 计算相反方向的移动向量
+                    const angle = Math.atan2(dy, dx) + Math.PI; // 相反方向
+                    const moveX = Math.cos(angle) * moveDistance;
+                    const moveY = Math.sin(angle) * moveDistance;
+
+                    // 限制按钮移动范围在可视区内
+                    const maxX = window.innerWidth - rect.width;
+                    const maxY = window.innerHeight - rect.height;
+                    const currentLeft = parseInt(button.style.left || 0);
+                    const currentTop = parseInt(button.style.top || 0);
+                    
+                    let newLeft = currentLeft + moveX;
+                    let newTop = currentTop + moveY;
+
+                    // 边界检查
+                    newLeft = Math.max(0, Math.min(newLeft, maxX));
+                    newTop = Math.max(0, Math.min(newTop, maxY));
+
+                    // 应用新位置
+                    button.style.position = 'relative';
+                    button.style.left = `${newLeft}px`;
+                    button.style.top = `${newTop}px`;
+
+                    // 随机播放躲避音效
+                    if (Math.random() > 0.7) {
+                        playPoopSound(3);
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
