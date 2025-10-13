@@ -17,17 +17,13 @@
         extend: {
           colors: {
             primary: '#3B82F6',
-            secondary: '#6B7280',
             dark: {
               bg: '#111827',
               card: '#1F2937',
               text: '#F9FAFB'
             }
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
+          }
+        }
       }
     }
   </script>
@@ -35,9 +31,6 @@
   <!-- 自定义工具类 -->
   <style type="text/tailwindcss">
     @layer utilities {
-      .content-auto {
-        content-visibility: auto;
-      }
       .card-hover {
         @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
       }
@@ -48,19 +41,26 @@
   </style>
   
   <style>
-    /* 平滑滚动 */
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     
-    /* 模式切换按钮样式 */
     .theme-toggle {
       z-index: 50;
       transition: transform 0.3s ease;
     }
     
-    .theme-toggle:hover {
-      transform: rotate(30deg);
+    .theme-toggle:hover { transform: rotate(30deg); }
+    
+    /* Logo样式 */
+    .custom-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+    
+    .friend-logo {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
     }
   </style>
 </head>
@@ -77,7 +77,7 @@
     <div class="container mx-auto flex items-center">
       <i class="fa fa-exclamation-triangle text-amber-500 mr-3 text-xl"></i>
       <p class="text-sm md:text-base text-amber-800 dark:text-amber-200">
-        警告声明：本导航提供的链接仅供参考，访问前请遵守相关法律法规，有任何意见建议联系站主1@lzy666.top。
+        警告声明：本导航提供的链接仅供参考，访问前请遵守相关法律法规，有任何问题请联系站主1@lzy666.top。
       </p>
     </div>
   </header>
@@ -85,10 +85,10 @@
   <!-- 网站标题 -->
   <div class="container mx-auto py-8 px-4 md:px-6">
     <h1 class="text-4xl md:text-5xl font-bold text-center mb-2 bg-gradient-to-r from-primary to-blue-700 dark:from-blue-400 dark:to-blue-600 text-transparent bg-clip-text">
-      网址导航
+      还在完善，没搞好，滚
     </h1>
     <p class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-      精选优质网站，便捷你的网络生活
+      这是一个副标题
     </p>
   </div>
 
@@ -100,11 +100,11 @@
         <i class="fa fa-search text-primary mr-2"></i>搜索引擎
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- 网站卡片1 -->
+        <!-- 谷歌 -->
         <a href="https://www.google.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-google text-orange-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.google.com/favicon.ico" alt="谷歌logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">谷歌</h3>
@@ -113,11 +113,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片2 -->
+        <!-- 百度 -->
         <a href="https://www.baidu.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-fire text-blue-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.baidu.com/favicon.ico" alt="百度logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">百度</h3>
@@ -126,11 +126,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片3 -->
+        <!-- 必应 -->
         <a href="https://www.bing.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-moon-o text-purple-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.bing.com/favicon.ico" alt="必应logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">必应</h3>
@@ -139,11 +139,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片4 -->
+        <!-- 搜狗 -->
         <a href="https://www.sogou.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-weibo text-red-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.sogou.com/favicon.ico" alt="搜狗logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">搜狗</h3>
@@ -160,11 +160,11 @@
         <i class="fa fa-users text-primary mr-2"></i>社交媒体
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- 网站卡片5 -->
+        <!-- Facebook -->
         <a href="https://www.facebook.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-facebook text-blue-600 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.facebook.com/favicon.ico" alt="Facebook logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">Facebook</h3>
@@ -173,11 +173,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片6 -->
+        <!-- Twitter -->
         <a href="https://twitter.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-twitter text-sky-400 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://twitter.com/favicon.ico" alt="Twitter logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">Twitter</h3>
@@ -186,11 +186,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片7 -->
+        <!-- YouTube -->
         <a href="https://www.youtube.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-youtube-play text-red-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.youtube.com/favicon.ico" alt="YouTube logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">YouTube</h3>
@@ -199,11 +199,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片8 -->
+        <!-- Instagram -->
         <a href="https://www.instagram.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-instagram text-pink-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.instagram.com/favicon.ico" alt="Instagram logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">Instagram</h3>
@@ -212,11 +212,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片9 -->
+        <!-- 微信 -->
         <a href="https://weixin.qq.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-weixin text-green-600 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="" alt="微信logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">微信</h3>
@@ -225,11 +225,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片10 -->
+        <!-- 微博 -->
         <a href="https://weibo.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-weibo text-red-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://weibo.com/favicon.ico" alt="微博logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">微博</h3>
@@ -238,11 +238,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片11 -->
+        <!-- Telegram -->
         <a href="https://telegram.org" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-telegram text-blue-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://telegram.org/favicon.ico" alt="Telegram logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">Telegram</h3>
@@ -251,11 +251,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片12 -->
+        <!-- Reddit -->
         <a href="https://www.reddit.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-reddit text-purple-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.reddit.com/favicon.ico" alt="Reddit logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">Reddit</h3>
@@ -272,11 +272,11 @@
         <i class="fa fa-wrench text-primary mr-2"></i>工具网站
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- 网站卡片13 -->
+        <!-- 云端存储 -->
         <a href="https://drive.google.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-cloud text-green-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://drive.google.com/favicon.ico" alt="云端存储logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">云端存储</h3>
@@ -285,11 +285,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片14 -->
+        <!-- 在线设计 -->
         <a href="https://www.canva.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-paint-brush text-indigo-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.canva.com/favicon.ico" alt="在线设计logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">在线设计</h3>
@@ -298,11 +298,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片15 -->
+        <!-- 翻译工具 -->
         <a href="https://translate.google.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-language text-teal-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://translate.google.com/favicon.ico" alt="翻译工具logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">翻译工具</h3>
@@ -311,11 +311,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片16 -->
+        <!-- 在线计算 -->
         <a href="https://www.calculator.net" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-calculator text-amber-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.calculator.net/favicon.ico" alt="在线计算logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">在线计算</h3>
@@ -324,11 +324,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片17 -->
+        <!-- 代码工具 -->
         <a href="https://codepen.io" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-code text-blue-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://codepen.io/favicon.ico" alt="代码工具logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">代码工具</h3>
@@ -337,11 +337,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片18 -->
+        <!-- 图片处理 -->
         <a href="https://pixlr.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-photo text-red-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://pixlr.com/favicon.ico" alt="图片处理logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">图片处理</h3>
@@ -350,11 +350,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片19 -->
+        <!-- 时间工具 -->
         <a href="https://www.timeanddate.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-clock-o text-purple-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.timeanddate.com/favicon.ico" alt="时间工具logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">时间工具</h3>
@@ -363,11 +363,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片20 -->
+        <!-- 数据可视化 -->
         <a href="https://chartgo.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-bar-chart text-green-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://chartgo.com/favicon.ico" alt="数据可视化logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">数据可视化</h3>
@@ -384,11 +384,11 @@
         <i class="fa fa-book text-primary mr-2"></i>学习资源
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- 网站卡片21 -->
+        <!-- 在线课程 -->
         <a href="https://www.coursera.org" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-graduation-cap text-blue-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.coursera.org/favicon.ico" alt="在线课程logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">在线课程</h3>
@@ -397,11 +397,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片22 -->
+        <!-- 编程学习 -->
         <a href="https://www.codecademy.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-code text-indigo-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.codecademy.com/favicon.ico" alt="编程学习logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">编程学习</h3>
@@ -410,11 +410,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片23 -->
+        <!-- 语言学习 -->
         <a href="https://www.duolingo.com" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-language text-amber-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.duolingo.com/favicon.ico" alt="语言学习logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">语言学习</h3>
@@ -423,11 +423,11 @@
           </div>
         </a>
         
-        <!-- 网站卡片24 -->
+        <!-- 电子书库 -->
         <a href="https://www.gutenberg.org" target="_blank" class="bg-white dark:bg-dark-card rounded-xl shadow p-5 card-hover border border-gray-100 dark:border-gray-700">
           <div class="flex items-start">
-            <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fa fa-book text-green-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-4 flex-shrink-0">
+              <img data-src="https://www.gutenberg.org/favicon.ico" alt="电子书库logo" class="custom-logo">
             </div>
             <div>
               <h3 class="font-bold text-lg mb-1">电子书库</h3>
@@ -447,36 +447,36 @@
       </h2>
       
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <!-- 友情链接1 -->
-        <a href="https://www.itigerup.com/hans/about" target="_blank" class="bg-white dark:bg-dark-card rounded-lg p-3 flex flex-col items-center text-center link-item shadow-sm">
-          <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-2">
-            <i href="https://ts3.tc.mm.bing.net/th/id/OIP-C.nRYnFki8FmrcaCBI0KwelgHaD5?w=80&h=80&c=1&bgcl=5bfcf0&r=0&o=7&cb=12&dpr=1.5&pid=ImgRC&rm=3"></i>
+        <!-- 老虎国际 -->
+        <a href="https://www.tigerbrokers.com" target="_blank" class="bg-white dark:bg-dark-card rounded-lg p-3 flex flex-col items-center text-center link-item shadow-sm">
+          <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mb-2">
+            <img data-src="https://www.tigertrade.app/favicon.ico" alt="老虎国际logo" class="friend-logo">
           </div>
           <span class="text-sm font-medium">老虎国际</span>
         </a>
         
-        <!-- 友情链接2 -->
-        <a href="https://www.goodreads.com" target="_blank" class="bg-white dark:bg-dark-card rounded-lg p-3 flex flex-col items-center text-center link-item shadow-sm">
-          <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-2">
-            <i class="fa fa-book text-green-500"></i>
+        <!-- Digital Ocean -->
+        <a href="https://www.digitalocean.com" target="_blank" class="bg-white dark:bg-dark-card rounded-lg p-3 flex flex-col items-center text-center link-item shadow-sm">
+          <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mb-2">
+            <img data-src="https://ts1.tc.mm.bing.net/th/id/ODF.JPDOwE8F6N5bbeacCaJ-lA?w=32&h=32&qlt=90&pcl=fffffc&o=6&cb=12&pid=1.2" alt="Digital Ocean logo" class="friend-logo">
           </div>
-          <span class="text-sm font-medium">阅读阁</span>
+          <span class="text-sm font-medium">Digital Ocean</span>
         </a>
         
-        <!-- 友情链接3 -->
-        <a href="https://soundcloud.com" target="_blank" class="bg-white dark:bg-dark-card rounded-lg p-3 flex flex-col items-center text-center link-item shadow-sm">
-          <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-2">
-            <i class="fa fa-music text-purple-500"></i>
+        <!-- Cloudflare -->
+        <a href="https://www.cloudflare.com" target="_blank" class="bg-white dark:bg-dark-card rounded-lg p-3 flex flex-col items-center text-center link-item shadow-sm">
+          <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mb-2">
+            <img data-src="https://www.cloudflare.com/favicon.ico" alt="Cloudflare logo" class="friend-logo">
           </div>
-          <span class="text-sm font-medium">音乐台</span>
+          <span class="text-sm font-medium">Cloudflare</span>
         </a>
         
-        <!-- 友情链接4 -->
-        <a href="https://store.steampowered.com" target="_blank" class="bg-white dark:bg-dark-card rounded-lg p-3 flex flex-col items-center text-center link-item shadow-sm">
-          <div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-2">
-            <i class="fa fa-gamepad text-amber-500"></i>
+        <!-- GitHub -->
+        <a href="https://github.com" target="_blank" class="bg-white dark:bg-dark-card rounded-lg p-3 flex flex-col items-center text-center link-item shadow-sm">
+          <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mb-2">
+            <img data-src="https://github.com/favicon.ico" alt="GitHub logo" class="friend-logo">
           </div>
-          <span class="text-sm font-medium">Steam</span>
+          <span class="text-sm font-medium">GitHub</span>
         </a>
       </div>
     </div>
@@ -487,19 +487,19 @@
     <div class="container mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
-          <p class="text-sm">© 2017-2025 J. Lee. 保留所有权利.</p>
-          <p class="text-xs text-gray-400 mt-1">本站仅提供导航服务，不承担所链接网站的内容责任</p>
+          <p class="text-sm">© 2017-2025 Zy Lee 保留所有权利.</p>
+          <p class="text-xs text-gray-400 mt-1">本站仅提供导航服务，不承担所链接网站的内容任何责任</p>
         </div>
         
         <div class="flex space-x-6">
-          <a href="/asset/about.html" class="text-gray-300 hover:text-white transition-colors">
-            <i class="fa fa-info-circle mr-1"></i> 关于我们
+          <a href="asset/about.html" class="text-gray-300 hover:text-white transition-colors">
+            <i class="fa fa-info-circle mr-1"></i> 关于
           </a>
           <a href="asset/404.html" class="text-gray-300 hover:text-white transition-colors">
             <i class="fa fa-shield mr-1"></i> 隐私政策
           </a>
-          <a href="/asset/contact.html" class="text-gray-300 hover:text-white transition-colors">
-            <i class="fa fa-envelope mr-1"></i> 联系我们
+          <a href="asset/contact.html" class="text-gray-300 hover:text-white transition-colors">
+            <i class="fa fa-envelope mr-1"></i> 联系站主
           </a>
         </div>
       </div>
@@ -530,6 +530,29 @@
       } else {
         localStorage.setItem('theme', 'light');
       }
+    });
+
+    // Logo加载逻辑
+    document.addEventListener('DOMContentLoaded', () => {
+      // 处理所有自定义Logo
+      document.querySelectorAll('[data-src]').forEach(img => {
+        const src = img.getAttribute('data-src');
+        if (src) {
+          img.src = src;
+          // 加载失败时显示默认图标
+          img.addEventListener('error', () => {
+            img.style.display = 'none';
+            const placeholder = document.createElement('i');
+            placeholder.className = 'fa fa-globe text-gray-500';
+            img.parentNode.appendChild(placeholder);
+          });
+        } else {
+          img.style.display = 'none';
+          const placeholder = document.createElement('i');
+          placeholder.className = 'fa fa-globe text-gray-500';
+          img.parentNode.appendChild(placeholder);
+        }
+      });
     });
   </script>
 </body>
