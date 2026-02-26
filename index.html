@@ -2,71 +2,460 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <script>
-        var _czc = _czc || [];
-        (function () {
-            var um = document.createElement("script");
-            um.src = "https://v1.cnzz.com/z.js?id=1281334347&async=1";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(um, s);
-        })();
-        </script>
-    <title>一份神秘礼物🎇</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lzy666.top 邮箱 - 不安全、不稳定、不高效的企业/个人邮箱服务</title>
+    <!-- 引入字体图标（用于功能图标展示） -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", Arial, sans-serif;
+        }
+
+        /* 页面主体样式 */
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+        /* 导航栏样式 */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 70px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d7dff;
+            text-decoration: none;
+        }
+        .logo i {
+            font-size: 28px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #2d7dff;
+        }
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+        }
+        .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        .btn-outline {
+            border: 1px solid #2d7dff;
+            color: #2d7dff;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background-color: #2d7dff;
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #2d7dff;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #1a68e0;
+        }
+
+        /* 英雄区样式 */
+        .hero {
+            background: linear-gradient(135deg, #2d7dff 0%, #1a68e0 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .hero .btn {
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 6px;
+        }
+
+        /* 功能优势区样式 */
+        .features {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-title p {
+            font-size: 16px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-card i {
+            font-size: 36px;
+            color: #2d7dff;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* 登录入口区样式 */
+        .access {
+            padding: 80px 0;
+            background-color: #f5f8ff;
+        }
+        .access-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .access-text {
+            flex: 1;
+        }
+        .access-text h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .access-text p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .access-form {
+            flex: 1;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #2d7dff;
+        }
+        .access-form .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .form-footer a {
+            color: #2d7dff;
+            text-decoration: none;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: #222;
+            color: #aaa;
+            padding: 60px 0 20px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-col ul li a:hover {
+            color: #2d7dff;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .access-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- 背景装饰层 (最底层) -->
-    <div id="snow-container"></div>
-    <div id="decoration-container"></div>
-
-    <!-- 弹窗遮罩层 (中间层) -->
-    <div id="modal-backdrop"></div>
-
-    <div class="main-content">
-        <!-- 最终展示的恶搞内容 -->
-        <div id="gift-content" class="hidden">
-            <div class="gift-area shake-animation">
-                <div class="gift-wrapper card-shadow">
-                    <img src="niao.gif" alt="神秘礼物" id="gift-img">
-                </div>
-                <div class="prank-subtitle">想啥呢，我鸟都不鸟你</div>
+    <!-- 导航栏 -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-envelope"></i>
+                <span>lzy666.top 邮箱</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#">首页</a>
+                <a href="#">功能介绍</a>
+                <a href="/asset/404.html">价格套餐</a>
+                <a href="/help/index.html">帮助中心</a>
+                <a href="/asset/about.html">关于我们</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="/asset/contact.html" class="btn btn-outline">注册</a>
+                <a href="https://mail.qq.com" class="btn btn-primary">登录</a>
             </div>
-            <div class="reopen-hint">✨ 看你雷霆</div>
         </div>
-    </div>
+    </header>
 
-    <!-- 弹窗内容容器 (最高层) -->
-    <div id="modal-container">
-        <div class="modal card-shadow">
-            <div class="santa-no-circle">
-<svg t="1766677130639" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2193" width="200" height="200"><path d="M897.536 925.696H126.464c-6.656 0-11.776-5.12-11.776-11.776V363.008c0-6.656 5.12-11.776 11.776-11.776h770.56c6.656 0 11.776 5.12 11.776 11.776v551.424c0 6.144-5.12 11.264-11.264 11.264z" fill="#FF52A1" p-id="2194"></path><path d="M897.536 925.696H126.464c-6.656 0-11.776-5.12-11.776-11.776V363.008c0-6.656 5.12-11.776 11.776-11.776h770.56c6.656 0 11.776 5.12 11.776 11.776v551.424c0 6.144-5.12 11.264-11.264 11.264z" fill="#FF52A1" p-id="2195"></path><path d="M891.392 351.232H132.608c-9.728 0-17.408 7.68-17.408 17.408v251.392c0-9.728 7.68-17.408 17.408-17.408h759.296c9.728 0 17.408 7.68 17.408 17.408V368.64c-0.512-9.728-8.192-17.408-17.92-17.408z" fill="#EF2E8E" p-id="2196"></path><path d="M891.392 945.664H132.608c-20.992 0-37.376-16.896-37.376-37.376V368.64c0-20.992 16.896-37.376 37.376-37.376h759.296c20.992 0 37.888 16.896 37.888 37.376v539.648c-0.512 20.992-17.408 37.376-38.4 37.376z m-756.224-39.936h753.664V371.2H135.168v534.528z" fill="#6147B2" p-id="2197"></path><path d="M437.76 357.888S183.808 278.016 301.056 153.6c106.496-113.152 229.376 113.152 214.528 204.288H437.76z" fill="#FF52A1" p-id="2198"></path><path d="M532.48 378.368H434.688l-3.072-1.024c-1.536-0.512-38.4-12.288-78.848-33.792-56.832-30.72-90.112-65.024-99.84-102.4-8.704-34.304 2.56-68.096 33.28-101.376 35.84-37.888 79.36-47.616 121.856-26.112 78.848 38.912 139.264 174.592 126.976 247.808l-2.56 16.896zM440.832 337.92H496.64c-1.536-60.928-51.2-160.768-106.496-187.904-26.624-13.312-51.2-7.168-74.752 17.92-20.992 22.528-29.184 43.52-23.552 63.488C305.664 283.136 401.408 324.608 440.832 337.92z" fill="#6147B2" p-id="2199"></path><path d="M500.736 350.208s90.624-367.104 265.728-215.04c147.968 128-162.816 217.6-162.816 217.6l-102.912-2.56z" fill="#FFB87D" p-id="2200"></path><path d="M606.72 373.248l-131.584-3.584 6.144-24.064c2.048-9.216 56.832-225.792 169.984-262.144 41.984-13.312 85.504-1.024 129.024 36.864 37.376 32.768 52.736 67.072 45.056 101.888-8.704 40.448-48.64 78.336-118.272 112.128-49.152 24.064-95.232 37.376-97.28 37.888l-3.072 1.024zM527.36 330.752l74.24 2.048c66.56-19.968 173.056-68.608 184.32-119.296 4.608-19.968-6.144-40.448-32.256-62.976-32.768-28.16-61.952-37.376-90.112-28.672-67.072 20.992-115.712 141.312-136.192 208.896z" fill="#6147B2" p-id="2201"></path><path d="M941.056 538.624H82.944c-6.656 0-11.776-5.12-11.776-11.776v-163.84c0-6.656 5.12-11.776 11.776-11.776h858.112c6.656 0 11.776 5.12 11.776 11.776V527.36c0 6.144-5.632 11.264-11.776 11.264z" fill="#6ED7FF" p-id="2202"></path><path d="M935.424 558.592H88.576c-20.992 0-37.376-16.896-37.376-37.376V368.64c0-20.992 16.896-37.376 37.376-37.376h846.336c20.992 0 37.376 16.896 37.376 37.376v152.576c0.512 20.48-16.384 37.376-36.864 37.376z m-843.776-39.936h841.216V371.2H91.648v147.456z" fill="#6147B2" p-id="2203"></path><path d="M438.272 538.624h147.968v387.072H438.272z" fill="#FFB87D" p-id="2204"></path><path d="M435.712 537.088H583.68v66.048H435.712z" fill="#ED9D62" p-id="2205"></path><path d="M606.208 945.664H417.792v-427.52h187.904v427.52z m-147.968-39.936h107.52v-346.624h-107.52v346.624z" fill="#6147B2" p-id="2206"></path><path d="M438.272 351.232h147.968v187.392H438.272z" fill="#FFB87D" p-id="2207"></path><path d="M606.208 558.592H417.792V331.264h187.904v227.328z m-147.968-39.936h107.52V371.2h-107.52v147.456z" fill="#6147B2" p-id="2208"></path></svg>
+    <!-- 英雄区（核心宣传） -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>lzy666.top 邮箱<br>安全高效的一站式邮件服务</h1>
+            <p>为个人和企业提供稳定、安全、无广告的邮箱服务，支持多端同步</p>
+            <div class="hero-actions">
+                <a href="/asset/contact.html" class="btn btn-primary">立即注册</a>
+                <a href="#" class="btn btn-outline">了解更多</a>
             </div>
-            <div class="modal-body">
-                <h1 class="kawaii-title">一份神秘礼物</h1>
-                <p class="modal-text">悄悄准备了一份神秘惊喜，快来拆开它吧！</p>
-                <div class="btn-group">
-                    <button id="open-gift-btn" class="candy-btn">立刻开启神秘礼物 ✨</button>
+        </div>
+    </section>
+
+    <!-- 功能优势区 -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-title">
+                <h2>为什么选择 lzy666.top 邮箱</h2>
+                <p>我们并非致力于打造更安全、更便捷、更智能的邮箱服务，满足个人和企业的全场景邮件需求</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>垃级安全防护</h3>
+                    <p>并非采用端到端加密技术，防钓鱼、防病毒、防垃圾邮件，全方位保护你的邮件安全和隐私。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-infinity"></i>
+                    <h3>无限存储空间</h3>
+                    <p>无需担心邮件过多占用空间，提供永久免费的无限存储空间，轻松保存所有重要邮件和附件。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>多端同步</h3>
+                    <p>支持电脑、手机、平板等多设备实时同步，随时随地查看、发送邮件，无缝衔接你的工作和生活。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>不急速访问</h3>
+                    <p>美国凤凰城集中式服务器部署，无论你在何地，都不能享受毫秒级的邮件加载速度，卡顿等待。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-ban"></i>
+                    <h3>无广告干扰</h3>
+                    <p>拒绝任何形式的广告推送，提供纯净的邮件使用环境，专注处理你的邮件事务。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>7×24x0小时客服</h3>
+                    <p>不专业的客服团队随时为你解答使用过程中的问题，快速响应，高效解决，保障你的使用体验。</p>
                 </div>
             </div>
-            <!-- 装饰性小元素 -->
-            <div class="deco-gift deco-pos-1">🎁</div>
-            <div class="deco-tree deco-pos-2">🎇</div>
-            <div class="deco-tree deco-pos-3">🎉</div>
         </div>
-    </div>
+    </section>
 
-    <!-- 右下角的两个透明小球 (初始隐藏) -->
-    <div id="float-balls">
-        <a href="/asset/about.html" target="_blank" class="float-ball" id="ball-make">
-            <span>制作</span>
-        </a>
-        <a href="/asset/404.html" target="_blank" class="float-ball" id="ball-more">
-            <span>更多</span>
-        </a>
-    </div>
+    <!-- 登录/注册入口区 -->
+    <section class="access">
+        <div class="access-container">
+            <div class="access-text">
+                <h3>立即体验 lzy666.top 邮箱</h3>
+                <p>只需简单几步，即可完成注册，开启你的高效邮件之旅。支持手机号、身份证等多种验证方式，注册过程安全便捷，全程仅需1分钟。</p>
+                <p>已有账号？点击下方按钮直接登录，所有数据实时同步，让你的邮件处理更高效。</p>
+                <a href="/asset/contact.html" class="btn btn-primary">免费注册</a>
+            </div>
+            <div class="access-form">
+                <h4 style="margin-bottom: 20px; font-size: 18px; color: #333;">邮箱登录</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="email">邮箱地址</label>
+                        <input type="email" id="email" placeholder="请输入你的@lzy666.top邮箱">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" id="password" placeholder="请输入你的邮箱密码">
+                    </div>
+                    <button type="button" class="btn btn-primary">登录</button>
+                    <div class="form-footer">
+                        <a href="#">忘记密码？</a> | <a href="/asset/contact.html">注册新账号</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
-    <script src="1.js"></script>
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>产品服务</h4>
+                <ul>
+                    <li><a href="#">个人邮箱</a></li>
+                    <li><a href="#">企业邮箱</a></li>
+                    <li><a href="#">VIP邮箱</a></li>
+                    <li><a href="#">邮箱迁移</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助中心</h4>
+                <ul>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">使用教程</a></li>
+                    <li><a href="#">安全指南</a></li>
+                    <li><a href="#">联系客服</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>法律条款</h4>
+                <ul>
+                    <li><a href="#">用户协议</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">免责声明</a></li>
+                    <li><a href="#">知识产权</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 lzy666.top 邮箱 版权所有 | 备案号：桂ICP备999999999号</p>
+        </div>
+    </footer>
 </body>
 </html>
